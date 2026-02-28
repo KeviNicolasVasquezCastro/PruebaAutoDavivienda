@@ -12,4 +12,4 @@
       Then valida que se inserte de manera exitosa
       Examples:
       |url|usuario|contrasena|firstName|middleName|lastName|
-      |https://opensource-demo.orangehrmlive.com/web/index.php/auth/login|Admin|admin123|kevin|nicolas|vasquez|
+      |https://opensource-demo.orangehrmlive.com/web/index.php/auth/login|Admin|admin123|segunprueba|nicolas|vasquez|

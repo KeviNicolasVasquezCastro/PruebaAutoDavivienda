@@ -11,7 +11,7 @@ import starter.ui.LoginPage;
 
 public class Login implements Task {
 
-    private LoginLoombokData loginLoombokData;
+    private final LoginLoombokData loginLoombokData;
 
     public Login (LoginLoombokData loginLoombokData){
         this.loginLoombokData = loginLoombokData;
