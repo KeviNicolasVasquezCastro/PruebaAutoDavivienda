@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+//este model es para extraer los datos de login del feature
+
 @Data
 public class LoginLoombokData {
 

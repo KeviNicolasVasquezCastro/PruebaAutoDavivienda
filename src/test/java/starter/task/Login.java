@@ -1,8 +1,8 @@
 package starter.task;
 
-import net.serenitybdd.core.steps.Instrumented;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Task;
+import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.Open;
@@ -27,8 +27,8 @@ public class Login implements Task {
         );
     }
 
-    public static Login conCredenciales (LoginLoombokData loginLoombokData){
-        return Instrumented.instanceOf(Login.class).withProperties(loginLoombokData);
+    public static Login conCredenciales(LoginLoombokData loginLoombokData){
+        return Tasks.instrumented(Login.class, loginLoombokData);
     }
 
 }

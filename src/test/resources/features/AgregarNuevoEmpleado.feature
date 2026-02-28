@@ -9,7 +9,9 @@
       When agrega un nuevo empleado con datos basicos
       |firstName|middleName|lastName|
       |<firstName>|<middleName>|<lastName>|
-      Then valida que se inserte de manera exitosa
+      And valida que se inserte de manera exitosa
+      And consulta empleado en el directory
+      Then valida que el usuario existe en el directory
       Examples:
       |url|usuario|contrasena|firstName|middleName|lastName|
-      |https://opensource-demo.orangehrmlive.com/web/index.php/auth/login|Admin|admin123|segunprueba|nicolas|vasquez|
+      |https://opensource-demo.orangehrmlive.com/web/index.php/auth/login|Admin|admin123|kevin|nicolas|vasquez|

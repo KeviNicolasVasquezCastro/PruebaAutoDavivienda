@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+//este model es para extraer los datos del empleado del feature
 
 @Data
 public class AgregarEmpleadoLoombokData {
@@ -14,6 +15,7 @@ public class AgregarEmpleadoLoombokData {
     String firstName;
     String middleName;
     String lastName;
+    String firstNameConId;
 
     public static List<AgregarEmpleadoLoombokData> setData(DataTable dataTable){
 

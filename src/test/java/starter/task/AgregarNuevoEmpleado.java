@@ -27,8 +27,14 @@ public class AgregarNuevoEmpleado implements Task {
     public <T extends Actor> void performAs(T actor) {
 
         //crer id por tiempo
-        String idUnico = LocalDateTime.now()
-                .format(DateTimeFormatter.ofPattern("HHmmssSS"));
+        String idUnico = LocalDateTime.now().format(DateTimeFormatter.ofPattern("HHmmssSS"));
+
+        // Concatenar al nombre el id, ya que luego lo vamos a consultar en la ultima parte de la prueba, y para que sea mas confiable la prueba
+        // sera mejor que el nombre sea unico, ya que se nos indico consular por nombre.
+        String firstNameConId = agregarEmpleadoLoombokData.getFirstName() + idUnico;
+        // Guardar en el mismo objeto
+        agregarEmpleadoLoombokData.setFirstNameConId(firstNameConId);
+
 
         String rutaFoto = Paths.get("src/test/resources/" + nombreFoto)
                 .toAbsolutePath()
@@ -37,7 +43,7 @@ public class AgregarNuevoEmpleado implements Task {
         actor.attemptsTo(
                 Click.on(AgregarEmpleadoPage.PIM),
                 Click.on(AgregarEmpleadoPage.buttonAdd),
-                Enter.theValue(agregarEmpleadoLoombokData.getFirstName()).into(AgregarEmpleadoPage.firstName),
+                Enter.theValue(agregarEmpleadoLoombokData.getFirstNameConId()).into(AgregarEmpleadoPage.firstName),
                 Enter.theValue(agregarEmpleadoLoombokData.getMiddleName()).into(AgregarEmpleadoPage.middleName),
                 Enter.theValue(agregarEmpleadoLoombokData.getLastName()).into(AgregarEmpleadoPage.lastName),
                 Click.on(AgregarEmpleadoPage.id),
