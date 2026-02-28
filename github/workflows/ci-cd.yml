@@ -1,0 +1,41 @@
+name: CI/CD - Serenity BDD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1️⃣ Obtener el código
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # 2️⃣ Configurar JDK (Java 17 por ejemplo)
+      - name: Setup JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      # 3️⃣ Instalar Chrome para pruebas UI
+      - name: Install Google Chrome
+        run: |
+          sudo apt update
+          sudo apt install -y google-chrome-stable
+
+      # 4️⃣ Build con Maven y ejecutar pruebas
+      - name: Build and run tests
+        run: |
+          mvn clean verify -B
+
+      # 5️⃣ Subir reportes de Serenity como artefactos
+      - name: Upload Serenity Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: serenity-reports
+          path: target/site/serenity
