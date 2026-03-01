@@ -37,10 +37,6 @@ jobs:
       - name: Build and run tests
         run: mvn clean verify serenity:aggregate -B -Dheadless.mode=true
 
-      - name: Show GitHub Pages URL
-        run:
-          echo "Reporte disponible en: https://kevinicolasvasquezcastro.github.io/PruebaAutoDavivienda/"
-
       - name: Upload Serenity Reports
         uses: actions/upload-artifact@v4
         with:
@@ -54,3 +50,7 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./target/site/serenity
           publish_branch: gh-pages
+
+      - name: Show GitHub Pages URL
+        run:
+          echo "Reporte disponible en: https://kevinicolasvasquezcastro.github.io/PruebaAutoDavivienda/"
