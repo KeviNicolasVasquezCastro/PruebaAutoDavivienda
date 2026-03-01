@@ -46,9 +46,9 @@ jobs:
 
       # 6️⃣ Publicar reporte en GitHub Pages (solo en push a main)
       - name: Deploy Serenity Report to GitHub Pages
-        if: github.event_name == 'push'
+        if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./target/site/serenity
+          publish_dir: ./target/site
           publish_branch: gh-pages
