@@ -8,9 +8,12 @@ import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.SendKeys;
+import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.openqa.selenium.Keys;
 import starter.models.AgregarEmpleadoLoombokData;
 import starter.ui.ConsultarEmpleadoPage;
+
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 
 public class ConsultarEmpleado implements Task {
@@ -25,6 +28,7 @@ public class ConsultarEmpleado implements Task {
     public <T extends Actor> void performAs(T actor) {
         String nombreBuscado = agregarEmpleadoLoombokData.getFirstNameConId();
         actor.attemptsTo(
+                WaitUntil.the(ConsultarEmpleadoPage.directory, isVisible()).forNoMoreThan(20).seconds(),
                 Click.on(ConsultarEmpleadoPage.directory),
                 Enter.theValue(nombreBuscado).into(ConsultarEmpleadoPage.employeeName),
                 //damos unos segundos para que consulte los resultados

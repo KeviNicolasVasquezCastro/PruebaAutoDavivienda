@@ -28,7 +28,7 @@ public class ConsultarEmpleadoPage {
 
     // Targets estáticos
     public static final Target directory = Target.the("opcion de Directory")
-            .locatedBy("//span[text()='Directory']");
+            .locatedBy("//a[.//span[text()='Directory']]");
     public static final Target employeeName = Target.the("campo para buscar por name")
             .locatedBy("//input[@placeholder='Type for hints...']");
     public static final Target botoSearch = Target.the("boton search")
