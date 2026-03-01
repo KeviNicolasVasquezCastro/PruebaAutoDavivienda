@@ -8,8 +8,11 @@ on:
   workflow_dispatch:
 
 jobs:
-  build-and-test:
+  build-test-deploy:
     runs-on: ubuntu-latest
+
+    permissions:
+      contents: write   # 🔥 necesario para publicar en gh-pages
 
     steps:
       # 1️⃣ Obtener el código
@@ -30,10 +33,9 @@ jobs:
           sudo apt update
           sudo apt install -y google-chrome-stable
 
-      # 4️⃣ Ejecutar pruebas con Maven (modo headless recomendado en CI)
+      # 4️⃣ Ejecutar pruebas con Maven (modo headless en CI)
       - name: Build and run tests
-        run: |
-          mvn clean verify -B -Dheadless.mode=true
+        run: mvn clean verify -B -Dheadless.mode=true
 
       # 5️⃣ Subir reportes de Serenity como artefacto
       - name: Upload Serenity Reports
@@ -41,3 +43,12 @@ jobs:
         with:
           name: serenity-reports
           path: target/site/serenity
+
+      # 6️⃣ Publicar reporte en GitHub Pages (solo en push a main)
+      - name: Deploy Serenity Report to GitHub Pages
+        if: github.event_name == 'push'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./target/site/serenity
+          publish_branch: gh-pages
