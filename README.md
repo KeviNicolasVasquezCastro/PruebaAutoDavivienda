@@ -12,6 +12,7 @@ Serenity BDD + Cucumber
 Lombok
 Maven
 GitHub Actions (CI y reportes)
+Integración de la automatización con BrowserStack para el flujo de trabajo.
 
 Ejecución
 
