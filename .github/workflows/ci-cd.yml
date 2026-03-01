@@ -12,14 +12,14 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write   # 🔥 necesario para publicar en gh-pages
+      contents: write
 
     steps:
-      # 1️⃣ Obtener el código
+      # 1️⃣ Checkout del repositorio
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 2️⃣ Configurar JDK 17 + Cache Maven
+      # 2️⃣ Configurar JDK 17 con cache Maven
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
@@ -33,22 +33,22 @@ jobs:
           sudo apt update
           sudo apt install -y google-chrome-stable
 
-      # 4️⃣ Ejecutar pruebas con Maven (modo headless en CI)
+      # 4️⃣ Ejecutar pruebas y generar reporte Serenity
       - name: Build and run tests
-        run: mvn clean verify -B -Dheadless.mode=true
+        run: mvn clean verify serenity:aggregate -B -Dheadless.mode=true
 
-      # 5️⃣ Subir reportes de Serenity como artefacto
+      # 5️⃣ Subir reporte como artefacto
       - name: Upload Serenity Reports
         uses: actions/upload-artifact@v4
         with:
           name: serenity-reports
           path: target/site/serenity
 
-      # 6️⃣ Publicar reporte en GitHub Pages (solo en push a main)
+      # 6️⃣ Publicar en GitHub Pages (solo cuando es push a main)
       - name: Deploy Serenity Report to GitHub Pages
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./target/site
+          publish_dir: ./target/site/serenity
           publish_branch: gh-pages
