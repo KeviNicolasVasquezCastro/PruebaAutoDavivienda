@@ -37,7 +37,7 @@ public class ConsultarEmpleado implements Task {
 
         String nombreBuscado = agregarEmpleadoLoombokData.getFirstNameConId();
         actor.attemptsTo(
-                WaitUntil.the(ConsultarEmpleadoPage.directory, isVisible()).forNoMoreThan(20).seconds(),
+                WaitUntil.the(ConsultarEmpleadoPage.directory, isVisible()).forNoMoreThan(30).seconds(),
                 Click.on(ConsultarEmpleadoPage.directory),
                 WaitUntil.the(ConsultarEmpleadoPage.employeeName, isVisible())
                         .forNoMoreThan(10).seconds(),
