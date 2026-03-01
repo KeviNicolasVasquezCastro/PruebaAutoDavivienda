@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Screenshots</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" sizes="57x57" href="apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="bootstrap-icons/bootstrap-icons.css">
+<!-- JQuery -->
+<script type="text/javascript" src="scripts/jquery-1.11.1.min.js"></script><!-- Required Stylesheets -->
+<link href="bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet">
+
+<!-- Required Javascript -->
+<script src="bootstrap-treeview/dist/bootstrap-treeview.min.js"></script><!-- DataTables -->
+<link type="text/css" href="datatables/1.13.1/datatables.min.css" rel="stylesheet" />
+<script type="text/javascript" src="datatables/1.13.1/datatables.min.js"></script>
+<script type="text/javascript" src="datatables/1.13.1/time-elapsed-dhms.js"></script>
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<script src="bootstrap/js/bootstrap.min.js"></script>
+
+
+<script>
+    jQuery.fn.dataTable.ext.type.order['time-elapsed-dhms-pre'] = function(data) {
+
+        var matches = data.match(/^(\d+(?:\.\d+)?)\s*([a-z]+)/i);
+        var multipliers = {
+            ms: 1,
+            s: 1000,
+            m: 60000,
+            h: 3600000,
+            d: 86400000
+        };
+
+        if (matches) {
+            var multiplier = multipliers[matches[2].toLowerCase()];
+            return parseFloat(matches[1]) * multiplier;
+        } else {
+            return -1;
+        };
+    };
+</script>
+<link rel="stylesheet" href="css/core.css"/>
+<link rel="stylesheet" href="css/link.css"/>
+<link type="text/css" media="screen" href="css/screen.css" rel="Stylesheet"/>
+<!--CHART.JS-->
+<script src="chartjs/chart.js"></script>
+<script src="chartjs/chartjs-plugin-datalabels@2.0.0.min.js"></script>
+<script src="chartjs/patternomaly.min.js"></script>
+<script>
+    // Register the plugin to all charts:
+    Chart.register(ChartDataLabels);
+</script>
+<!-- Nivo Slider -->
+<link rel="stylesheet" href="nivo-slider/3.2/nivo-slider.css" type="text/css" media="screen" />
+<link rel="stylesheet" href="nivo-slider/3.2/themes/default/default.css" type="text/css" media="screen" />
+<script src="nivo-slider/3.2/jquery.nivo.slider.pack.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+        function getUrlVars() {
+            var vars = {};
+            var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function (m, key, value) {
+                vars[key] = value;
+            });
+            return vars;
+        }
+
+        var screenshotIndex = getUrlVars()["screenshot"];
+
+        $(window).load(function () {
+            $('#slider').nivoSlider({
+                startSlide: screenshotIndex,
+                effect: 'fade',
+                animSpeed: 200,
+                manualAdvance: true
+            });
+        });
+
+        $(window).keydown(function(e) {
+            switch(e.which) {
+                case 37:
+                    $('a.nivo-prevNav').click();
+                    break;
+                case 39:
+                    $('a.nivo-nextNav').click();
+                    break;
+            }
+        });
+    </script>
+
+</head>
+
+<body>
+<div id="topheader">
+    <div id="topbanner">
+        <div id="logo"><a href="index.html"><img src="images/serenity-logo.png" border="0"/></a></div>
+        <div id="projectname-banner" style="float:right">
+            <span class="projectname">
+                <span class="projecttitle">Test Automation JM Consultant</span>
+                <span class="projectsubtitle"></span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="middlecontent">
+    <div id="contenttop">
+        <div class="middlebg">
+            <span class="breadcrumbs">
+                <a href="index.html">Home</a>
+                > <span class="truncate-40"><a
+                    href="248ff741f162f69a5cb7cb9b87268dae932c33d5d7a7acf1969e12d3dbcdb73b.html">Agregar Nuevo Empleado</a></span>
+                > <span class="truncate-60"><a
+                    href="8cfceee8268876b437e11b1a4e0f12927c6db3868f8bec82b5c94e03ea19059c.html">Registro exitoso </a></span>
+                > Screenshots
+            </span>
+        </div>
+        <div class="rightbg"></div>
+    </div>
+
+    <div class="clr"></div>
+
+    <!--/* starts second table*/-->
+<div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#"><i class="bi bi-journal-check"></i> Overall Test Results</a>
+        </li>
+        <li >
+            <a href="capabilities.html"><i class="bi bi-journal-text"></i> Requirements</a>
+        </li>
+        <li >
+            <a href="576946480b52ad056d6f5bddf874399c83582ecf90963cc074a14c70580e7d9f.html"><i class="bi bi-chat-text"></i> Features</a>
+        </li>
+    </ul>
+    <span class="date-and-time"><a href="build-info.html"><i class="bi bi-info-circle"></i></a> Report generated 01-03-2026 01:20</span>
+    <br style="clear:left"/>
+</div>
+
+    <div class="clr"></div>
+
+
+    <div id="contentbody">
+        <div class="titlebar">
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td>
+                            <div>
+                                <h3 class="discreet-story-header">
+                                    <i class="fs-2 bi bi-chat-left-quote large-icon"></i>
+                                    <span class="story-header-title">Registro Nuevo Empleado De Manera Exitosa </span>
+                                    <span class="badge tag-badge" style="">Feature</span>
+                                </h3>
+
+                                <div class="discreet-requirement-narrative-title">
+                                
+                                </div>
+                            </div>
+
+                        </td>
+                        <td valign="top" align="right">
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="1d0c02fb9cb969bbd9e2f900ec6333e01b070c6fb5e26345e9374169cfab9e68.html">Regression
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="708ef672aafc5bb679f5a31a4cdab26e051dc575ae1f3379e1614f2e65b2220c.html">Registro Exitoso
+                                </a>
+                                </span>
+                            </p>
+                            <p class="tag">
+                                <span class="badge tag-badge" style="background:default;"
+                                    <i class="bi bi-tag-fill"></i>&nbsp;<a class="tagLink" style="background:default;" href="5698da923f295f46ce5ab64ced2311fc60caa4e36b32112606d3adcfdce3f60b.html">30 To 60 Seconds
+                                        (Duration)
+                                </a>
+                                </span>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="story-title">
+                <table class="outcome-header">
+                    <tr>
+                        <td colspan="2" class="test-title-bar">
+                            <span class="outcome-icon"><a href='##beforetable'><i class='bi bi-check-circle-fill success-icon fa-2x' title='SUCCESS'></i></a></span>
+                            <span class="test-case-title">
+                                <span class="success-color">Registro exitoso
+                                    <span class="related-issue-title"></span>
+                                </span>
+                            </span>
+
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="clr"></div>
+
+    <div class="story-title">
+        <h3>Scenario:</h3>
+        <div class="scenario">Given el usuario se autentica en la aplicacion<br><table class='embedded'><thead><th>url</th><th>usuario</th><th>contrasena</th></thead><tbody><tr><td>&lt;url&gt;</td><td>&lt;usuario&gt;</td><td>&lt;contrasena&gt;</td></tr></tbody></table><br>When agrega un nuevo empleado con datos basicos<br><table class='embedded'><thead><th>firstName</th><th>middleName</th><th>lastName</th></thead><tbody><tr><td>&lt;firstName&gt;</td><td>&lt;middleName&gt;</td><td>&lt;lastName&gt;</td></tr></tbody></table><br>And valida que se inserte de manera exitosa<br>And consulta empleado en el directory<br>Then valida que el usuario existe en el directory</div>
+    </div>
+
+    <div id="beforetable"></div>
+    <div id="contenttilttle">
+        <div class="slider-wrapper theme-default">
+            <div id="slider">
+                <img src="a1e014b49c0759c13e890c91ec2fc8db99ffa3ca143898aa8a9d4dd464ea4935.png" title=" 1: Registro exitoso ({url=https://opensource-demo.orangehrmlive.com/web/index.php/auth/login, usuario=Admin, contrasena=admin123, firstName=kevin, middleName=nicolas, lastName=vasquez})" width="0"/>
+                <img src="a1e014b49c0759c13e890c91ec2fc8db99ffa3ca143898aa8a9d4dd464ea4935.png" title=" Given el usuario se autentica en la aplicacion
+| url | usuario | contrasena |
+| https://opensource-demo.orangehrmlive.com/web/index.php/auth/login | Admin | admin123 |" width="0"/>
+                <img src="a1e014b49c0759c13e890c91ec2fc8db99ffa3ca143898aa8a9d4dd464ea4935.png" title=" Kevin login" width="0"/>
+                <img src="a1e014b49c0759c13e890c91ec2fc8db99ffa3ca143898aa8a9d4dd464ea4935.png" title=" Kevin opens the browser at https://opensource-demo.orangehrmlive.com/web/index.php/auth/login" width="0"/>
+                <img src="636bae42f272ef19cbf2bb736b4cfe9214021340a27d99d763eefd3d392ac152.png" title=" Kevin enters 'Admin' into campo name" width="0"/>
+                <img src="63f92fb694692ec9a657c1936684112c279b74bbc51a23d6c764c06c2c837891.png" title=" Kevin enters 'Admin' into campo name (completed)" width="0"/>
+                <img src="63f92fb694692ec9a657c1936684112c279b74bbc51a23d6c764c06c2c837891.png" title=" Kevin enters 'admin123' into campo password" width="0"/>
+                <img src="f74e1e711edddd4792262fc42846c10950c04ff4cb1b04765fc140bcde8844cb.png" title=" Kevin enters 'admin123' into campo password (completed)" width="0"/>
+                <img src="f74e1e711edddd4792262fc42846c10950c04ff4cb1b04765fc140bcde8844cb.png" title=" Kevin clicks on boton login" width="0"/>
+                <img src="a1e014b49c0759c13e890c91ec2fc8db99ffa3ca143898aa8a9d4dd464ea4935.png" title=" Kevin clicks on boton login (completed)" width="0"/>
+                <img src="a1e014b49c0759c13e890c91ec2fc8db99ffa3ca143898aa8a9d4dd464ea4935.png" title=" Kevin login (completed)" width="0"/>
+                <img src="a1e014b49c0759c13e890c91ec2fc8db99ffa3ca143898aa8a9d4dd464ea4935.png" title=" Given el usuario se autentica en la aplicacion
+| url | usuario | contrasena |
+| https://opensource-demo.orangehrmlive.com/web/index.php/auth/login | Admin | admin123 | (completed)" width="0"/>
+                <img src="a1e014b49c0759c13e890c91ec2fc8db99ffa3ca143898aa8a9d4dd464ea4935.png" title=" When agrega un nuevo empleado con datos basicos
+| firstName | middleName | lastName |
+| kevin | nicolas | vasquez |" width="0"/>
+                <img src="a1e014b49c0759c13e890c91ec2fc8db99ffa3ca143898aa8a9d4dd464ea4935.png" title=" Kevin agregar nuevo empleado" width="0"/>
+                <img src="0b26fa3c299c622587b3ce5e022f8b35c9d822639d0ae322cdea5466abbdfbc0.png" title=" Kevin clicks on opcion PIM" width="0"/>
+                <img src="a1e014b49c0759c13e890c91ec2fc8db99ffa3ca143898aa8a9d4dd464ea4935.png" title=" Kevin clicks on opcion PIM (completed)" width="0"/>
+                <img src="d25a1e642829a022c597489402ba83ffd220c1a55b418295fd18629a6db223ed.png" title=" Kevin clicks on boton + Add" width="0"/>
+                <img src="a1e014b49c0759c13e890c91ec2fc8db99ffa3ca143898aa8a9d4dd464ea4935.png" title=" Kevin clicks on boton + Add (completed)" width="0"/>
+                <img src="a1e09a4b9c358609e02182ea02c130e3bd88d4dd0159e339caa035939cbb9120.png" title=" Kevin enters 'kevin01205846' into campo de first name" width="0"/>
+                <img src="1491e189d5c7087cbdc2efe8b590d7cc959a832dcb3e993fdf5a099a2abf88d0.png" title=" Kevin enters 'kevin01205846' into campo de first name (completed)" width="0"/>
+                <img src="1491e189d5c7087cbdc2efe8b590d7cc959a832dcb3e993fdf5a099a2abf88d0.png" title=" Kevin enters 'nicolas' into campo de middle name" width="0"/>
+                <img src="7760cda912da776fcaffc39c52641a2b910a338b1063a27b45aa1423d22ceb79.png" title=" Kevin enters 'nicolas' into campo de middle name (completed)" width="0"/>
+                <img src="7760cda912da776fcaffc39c52641a2b910a338b1063a27b45aa1423d22ceb79.png" title=" Kevin enters 'vasquez' into campo de last name" width="0"/>
+                <img src="c0f177f049253fb62be062e4bdc9bc118994a3e4d624c3710f90c8c00ca1a260.png" title=" Kevin enters 'vasquez' into campo de last name (completed)" width="0"/>
+                <img src="c0f177f049253fb62be062e4bdc9bc118994a3e4d624c3710f90c8c00ca1a260.png" title=" Kevin clicks on campo de id" width="0"/>
+                <img src="0284d80c3f9bef47dc519ed86a56c6f50e323ae36d5d4a688831f008cd3ea6c3.png" title=" Kevin clicks on campo de id (completed)" width="0"/>
+                <img src="0284d80c3f9bef47dc519ed86a56c6f50e323ae36d5d4a688831f008cd3ea6c3.png" title=" Kevin enters 'a' into campo de id" width="0"/>
+                <img src="2f0484a92f9db3bf498ba87a918f9d041bb8871904855c8c6c5d98991a4b0dc4.png" title=" Kevin enters DELETE into campo de id" width="0"/>
+                <img src="f3f602702625ff566416d52718036ec8dd7ad00841e7ae4a25ac522f65f2a294.png" title=" Kevin enters DELETE into campo de id (completed)" width="0"/>
+                <img src="f3f602702625ff566416d52718036ec8dd7ad00841e7ae4a25ac522f65f2a294.png" title=" Kevin enters '01205846' into campo de id" width="0"/>
+                <img src="3ae17bb76f17e21c460bb38b5709ca73508229af7682778ed465ffa2c900c5e2.png" title=" Kevin enters '01205846' into campo de id (completed)" width="0"/>
+                <img src="3ae17bb76f17e21c460bb38b5709ca73508229af7682778ed465ffa2c900c5e2.png" title=" Kevin enters '/home/runner/work/PruebaAutoDavivienda/PruebaAutoDavivienda/src/test/resources/foto_empleado.jpg' into opcion para subir foto" width="0"/>
+                <img src="5da0e80f144136321e623e4204b7b668ab6b872954046dd1b2b3dc37ccb95219.png" title=" Kevin enters '/home/runner/work/PruebaAutoDavivienda/PruebaAutoDavivienda/src/test/resources/foto_empleado.jpg' into opcion para subir foto (completed)" width="0"/>
+                <img src="5da0e80f144136321e623e4204b7b668ab6b872954046dd1b2b3dc37ccb95219.png" title=" Kevin clicks on boton save" width="0"/>
+                <img src="4d29dfe6781043d759e5927917aaa810b9769abaecaeb6ac11d34ce676040981.png" title=" Kevin clicks on boton save (completed)" width="0"/>
+                <img src="4d29dfe6781043d759e5927917aaa810b9769abaecaeb6ac11d34ce676040981.png" title=" Kevin agregar nuevo empleado (completed)" width="0"/>
+                <img src="4d29dfe6781043d759e5927917aaa810b9769abaecaeb6ac11d34ce676040981.png" title=" When agrega un nuevo empleado con datos basicos
+| firstName | middleName | lastName |
+| kevin | nicolas | vasquez | (completed)" width="0"/>
+                <img src="4d29dfe6781043d759e5927917aaa810b9769abaecaeb6ac11d34ce676040981.png" title=" And valida que se inserte de manera exitosa" width="0"/>
+                <img src="4d29dfe6781043d759e5927917aaa810b9769abaecaeb6ac11d34ce676040981.png" title=" Then validar registro empleado" width="0"/>
+                <img src="27958ea81190103a1878cb209ec5e5051b722e1b83af76ee30190c339a2bd440.png" title=" Then validar registro empleado (completed)" width="0"/>
+                <img src="27958ea81190103a1878cb209ec5e5051b722e1b83af76ee30190c339a2bd440.png" title=" And valida que se inserte de manera exitosa (completed)" width="0"/>
+                <img src="27958ea81190103a1878cb209ec5e5051b722e1b83af76ee30190c339a2bd440.png" title=" And consulta empleado en el directory" width="0"/>
+                <img src="27958ea81190103a1878cb209ec5e5051b722e1b83af76ee30190c339a2bd440.png" title=" Kevin consultar empleado" width="0"/>
+                <img src="b4f3b5db4819a1cec9d28a3167532956ae7fa8dc13a8919ed3f6f42f32be7b38.png" title=" Kevin clicks on opcion de Directory" width="0"/>
+                <img src="a1e014b49c0759c13e890c91ec2fc8db99ffa3ca143898aa8a9d4dd464ea4935.png" title=" Kevin clicks on opcion de Directory (completed)" width="0"/>
+                <img src="0cb4aeddcd56b169a96e1370a766a418a12033aee40bca56dafeabaffab5ccbe.png" title=" Kevin enters 'kevin01205846' into campo para buscar por name" width="0"/>
+                <img src="239a6ff830a42beebaf618e52592118e031b6a208c98b7677d4cbaa5a0e92f87.png" title=" Kevin enters 'kevin01205846' into campo para buscar por name (completed)" width="0"/>
+                <img src="818957a308739a1ace15142194e2549d30212d4457b03805b95aed3597184263.png" title=" Kevin enters ARROW_DOWN,ENTER into campo para buscar por name" width="0"/>
+                <img src="818957a308739a1ace15142194e2549d30212d4457b03805b95aed3597184263.png" title=" Kevin clicks on boton search" width="0"/>
+                <img src="3f11c97d9aefac25ad10e81b0b39065c99a4c27e946bafe3f2a93058f7e36098.png" title=" Kevin clicks on boton search (completed)" width="0"/>
+                <img src="c640e6841432fe5e7392be4ac4ab20768fb5c29c7f43f4d1a89a9a258a1f51b4.png" title=" Kevin consultar empleado (completed)" width="0"/>
+                <img src="c640e6841432fe5e7392be4ac4ab20768fb5c29c7f43f4d1a89a9a258a1f51b4.png" title=" And consulta empleado en el directory (completed)" width="0"/>
+                <img src="c640e6841432fe5e7392be4ac4ab20768fb5c29c7f43f4d1a89a9a258a1f51b4.png" title=" Then valida que el usuario existe en el directory" width="0"/>
+                <img src="c640e6841432fe5e7392be4ac4ab20768fb5c29c7f43f4d1a89a9a258a1f51b4.png" title=" Then validar consulta empleado should be (true)" width="0"/>
+
+                <img src="c640e6841432fe5e7392be4ac4ab20768fb5c29c7f43f4d1a89a9a258a1f51b4.png" title=" 1: Registro exitoso ({url=https://opensource-demo.orangehrmlive.com/web/index.php/auth/login, usuario=Admin, contrasena=admin123, firstName=kevin, middleName=nicolas, lastName=vasquez}) (completed): <span class='success-color'>SUCCESS</span>" width="0"/>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<div id="beforefooter"></div>
+<div id="bottomfooter">
+    <span class="version">Serenity BDD version 4.2.1</span>
+</div>
+</body>
+</html>
