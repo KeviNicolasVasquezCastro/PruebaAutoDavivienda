@@ -11,17 +11,15 @@ jobs:
   build-test-deploy:
     runs-on: ubuntu-latest
 
-    environment:
-      name: github-pages
-      url: https://kevinicolasvasquezcastro.github.io/PruebaAutoDavivienda/
-
     permissions:
       contents: write
 
     steps:
+      # 1️⃣ Checkout del repositorio
       - name: Checkout code
         uses: actions/checkout@v4
 
+      # 2️⃣ Configurar JDK 17 con cache Maven
       - name: Setup JDK
         uses: actions/setup-java@v4
         with:
@@ -29,20 +27,25 @@ jobs:
           java-version: '17'
           cache: maven
 
+      # 3️⃣ Instalar Google Chrome (para pruebas UI)
       - name: Install Google Chrome
         run: |
           sudo apt update
           sudo apt install -y google-chrome-stable
 
+      # 4️⃣ Ejecutar pruebas y generar reporte Serenity
       - name: Build and run tests
-        run: mvn clean verify serenity:aggregate -B -Dheadless.mode=true
+        run: |
+          mvn clean verify serenity:aggregate -B -Dheadless.mode=true
 
+      # 5️⃣ Subir reporte como artefacto
       - name: Upload Serenity Reports
         uses: actions/upload-artifact@v4
         with:
           name: serenity-reports
           path: target/site/serenity
 
+      # 6️⃣ Publicar en GitHub Pages (solo cuando es push a main)
       - name: Deploy Serenity Report to GitHub Pages
         if: github.ref == 'refs/heads/main'
         uses: peaceiris/actions-gh-pages@v4
@@ -50,3 +53,10 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./target/site/serenity
           publish_branch: gh-pages
+
+      # 7️⃣ Mostrar URL del reporte en el log
+      - name: Show GitHub Pages URL
+        if: github.ref == 'refs/heads/main'
+        run: |
+          echo "🚀 Serenity Report disponible en:"
+          echo "https://kevinicolasvasquezcastro.github.io/PruebaAutoDavivienda/"
