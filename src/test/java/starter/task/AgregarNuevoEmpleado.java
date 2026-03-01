@@ -1,5 +1,7 @@
 package starter.task;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.screenplay.waits.WaitUntil;
+import net.thucydides.core.webdriver.WebDriverFacade;
 import org.openqa.selenium.Keys;
 import net.serenitybdd.screenplay.actions.SendKeys;
 import net.serenitybdd.screenplay.Actor;
@@ -7,13 +9,16 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import starter.models.AgregarEmpleadoLoombokData;
 import starter.ui.AgregarEmpleadoPage;
-import starter.ui.LoginPage;
 
+import java.io.File;
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
@@ -40,9 +45,25 @@ public class AgregarNuevoEmpleado implements Task {
         agregarEmpleadoLoombokData.setFirstNameConId(firstNameConId);
 
 
-        String rutaFoto = Paths.get("src/test/resources/" + nombreFoto)
-                .toAbsolutePath()
-                .toString();
+        /** Esta parte se realizo para subir la imagen del empleado a BrowserStack sin embargo el input no no permite recibir archivos desde
+        *Selenium cuando se ejecuta en un navegador remoto.
+        File file = new File("src/test/resources/" + nombreFoto);
+        String rutaAbsoluta = file.getAbsolutePath();
+
+        WebDriverFacade webDriverFacade = (WebDriverFacade) Serenity.getDriver();
+        RemoteWebDriver driverRemoto = (RemoteWebDriver) webDriverFacade.getProxiedDriver();
+
+        // Subir a BrowserStack
+        Map<String, Object> args = Map.of(
+                "action", "uploadFile",
+                "arguments", Map.of("filePath", rutaAbsoluta)
+        );
+
+        Map<String, Object> result = (Map<String, Object>) driverRemoto.executeScript(
+                "browserstack_executor: " + new com.google.gson.Gson().toJson(args));
+
+        String uploadedFilePath = (String) result.get("remoteFilePath");
+         */
 
         actor.attemptsTo(
                 WaitUntil.the(AgregarEmpleadoPage.PIM, isVisible())
@@ -60,7 +81,7 @@ public class AgregarNuevoEmpleado implements Task {
                 SendKeys.of(Keys.chord(Keys.CONTROL, "a")).into(AgregarEmpleadoPage.id),
                 SendKeys.of(Keys.DELETE).into(AgregarEmpleadoPage.id),
                 Enter.theValue(idUnico).into(AgregarEmpleadoPage.id),
-                SendKeys.of(rutaFoto).into(AgregarEmpleadoPage.photo),
+               // aca se hubiera subido la foto  SendKeys.of(uploadedFilePath).into(AgregarEmpleadoPage.photo),
                 Click.on(AgregarEmpleadoPage.buttonSave)
 
         );

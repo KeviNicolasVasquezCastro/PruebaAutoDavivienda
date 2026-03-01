@@ -1,0 +1,24 @@
+# BrowserStack configuration for Serenity BDD
+userName: ${BROWSERSTACK_USERNAME}   # Tomará el valor de la variable de entorno
+accessKey: ${BROWSERSTACK_ACCESS_KEY} # Tomará el valor de la variable de entorno
+framework: serenity
+
+platforms:
+  - os: Windows
+    osVersion: 11
+    browserName: Chrome
+    browserVersion: 115.0
+    resolution: 1920x1080
+
+# Nombre del build y del proyecto
+buildName: "Build-1"
+projectName: "Auto Davivienda"
+
+# BrowserStack options
+browserstackLocal: false  # Cambiar a true si necesitas probar un sitio local
+debug: true
+networkLogs: true
+consoleLogs: info
+
+# Etiquetas opcionales
+CUSTOM_TAG_1: "Serenity + BrowserStack"

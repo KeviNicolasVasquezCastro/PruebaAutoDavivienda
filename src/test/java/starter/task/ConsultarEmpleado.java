@@ -1,6 +1,7 @@
 package starter.task;
 
 import net.serenitybdd.annotations.Step;
+import net.serenitybdd.core.Serenity;
 import net.serenitybdd.screenplay.Actor;
 import net.serenitybdd.screenplay.Interaction;
 import net.serenitybdd.screenplay.Task;
@@ -10,6 +11,7 @@ import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.SendKeys;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
 import starter.models.AgregarEmpleadoLoombokData;
 import starter.ui.AgregarEmpleadoPage;
 import starter.ui.ConsultarEmpleadoPage;
@@ -19,6 +21,7 @@ import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisi
 
 public class ConsultarEmpleado implements Task {
 
+
     private final AgregarEmpleadoLoombokData agregarEmpleadoLoombokData;
 
     public ConsultarEmpleado (AgregarEmpleadoLoombokData agregarEmpleadoLoombokData){
@@ -27,6 +30,11 @@ public class ConsultarEmpleado implements Task {
 
     @Override
     public <T extends Actor> void performAs(T actor) {
+
+        // Maximizar ventana para que todos los elementos sean visibles
+        WebDriver driver = Serenity.getDriver();
+        driver.manage().window().maximize();
+
         String nombreBuscado = agregarEmpleadoLoombokData.getFirstNameConId();
         actor.attemptsTo(
                 WaitUntil.the(ConsultarEmpleadoPage.directory, isVisible()).forNoMoreThan(20).seconds(),
