@@ -50,7 +50,3 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./target/site/serenity
           publish_branch: gh-pages
-
-      - name: Show GitHub Pages URL
-        run:
-          echo "Reporte disponible en: https://kevinicolasvasquezcastro.github.io/PruebaAutoDavivienda/"
