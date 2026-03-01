@@ -25,3 +25,8 @@ El pipeline genera el reporte automáticamente, accesible desde la sección Acti
 Consideraciones
 
 -Lombok requiere plugin activo en el IDE.
+-Para ejecutar las pruebas en BrowserStack, es necesario configurar las credenciales de tu cuenta como **variables de entorno**:
+
+# Windows (CMD)
+setx BROWSERSTACK_USERNAME "tu_usuario"
+setx BROWSERSTACK_ACCESS_KEY "tu_access_key"
