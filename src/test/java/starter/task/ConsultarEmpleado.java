@@ -11,6 +11,7 @@ import net.serenitybdd.screenplay.actions.SendKeys;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.openqa.selenium.Keys;
 import starter.models.AgregarEmpleadoLoombokData;
+import starter.ui.AgregarEmpleadoPage;
 import starter.ui.ConsultarEmpleadoPage;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
@@ -30,6 +31,8 @@ public class ConsultarEmpleado implements Task {
         actor.attemptsTo(
                 WaitUntil.the(ConsultarEmpleadoPage.directory, isVisible()).forNoMoreThan(20).seconds(),
                 Click.on(ConsultarEmpleadoPage.directory),
+                WaitUntil.the(ConsultarEmpleadoPage.employeeName, isVisible())
+                        .forNoMoreThan(10).seconds(),
                 Enter.theValue(nombreBuscado).into(ConsultarEmpleadoPage.employeeName),
                 //damos unos segundos para que consulte los resultados
                 new Interaction() {
@@ -40,7 +43,15 @@ public class ConsultarEmpleado implements Task {
                     }
                 },
                 SendKeys.of(Keys.ARROW_DOWN, Keys.ENTER).into(ConsultarEmpleadoPage.employeeName),
-                Click.on(ConsultarEmpleadoPage.botoSearch)
+                Click.on(ConsultarEmpleadoPage.botoSearch),
+                //damos unos segundos para que consulte los resultados
+                new Interaction() {
+                    @Override
+                    @Step("{0} espera un momento")
+                    public <T extends Actor> void performAs(T actor) {
+                        try { Thread.sleep(4000); } catch (InterruptedException e) {}
+                    }
+                }
         );
     }
     public static ConsultarEmpleado enElSistema(AgregarEmpleadoLoombokData datosEmpleado) {

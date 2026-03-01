@@ -6,8 +6,11 @@ import net.serenitybdd.screenplay.Tasks;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.actions.Open;
+import net.serenitybdd.screenplay.waits.WaitUntil;
 import starter.models.LoginLoombokData;
 import starter.ui.LoginPage;
+
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class Login implements Task {
 
@@ -21,7 +24,11 @@ public class Login implements Task {
     public <T extends Actor> void performAs(T actor) {
         actor.attemptsTo(
                 Open.url(loginLoombokData.getUrl()),
+                WaitUntil.the(LoginPage.inputUser, isVisible())
+                        .forNoMoreThan(10).seconds(),
                 Enter.theValue(loginLoombokData.getUsuario()).into(LoginPage.inputUser),
+                WaitUntil.the(LoginPage.inputPassword, isVisible())
+                        .forNoMoreThan(10).seconds(),
                 Enter.theValue(loginLoombokData.getContrasena()).into(LoginPage.inputPassword),
                 Click.on(LoginPage.buttonLogin)
         );

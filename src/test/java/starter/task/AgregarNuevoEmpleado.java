@@ -1,4 +1,5 @@
 package starter.task;
+import net.serenitybdd.screenplay.waits.WaitUntil;
 import org.openqa.selenium.Keys;
 import net.serenitybdd.screenplay.actions.SendKeys;
 import net.serenitybdd.screenplay.Actor;
@@ -8,10 +9,13 @@ import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.actions.Enter;
 import starter.models.AgregarEmpleadoLoombokData;
 import starter.ui.AgregarEmpleadoPage;
+import starter.ui.LoginPage;
 
 import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+
+import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 
 public class AgregarNuevoEmpleado implements Task {
 
@@ -41,8 +45,14 @@ public class AgregarNuevoEmpleado implements Task {
                 .toString();
 
         actor.attemptsTo(
+                WaitUntil.the(AgregarEmpleadoPage.PIM, isVisible())
+                        .forNoMoreThan(10).seconds(),
                 Click.on(AgregarEmpleadoPage.PIM),
+                WaitUntil.the(AgregarEmpleadoPage.buttonAdd, isVisible())
+                        .forNoMoreThan(10).seconds(),
                 Click.on(AgregarEmpleadoPage.buttonAdd),
+                WaitUntil.the(AgregarEmpleadoPage.firstName, isVisible())
+                        .forNoMoreThan(10).seconds(),
                 Enter.theValue(agregarEmpleadoLoombokData.getFirstNameConId()).into(AgregarEmpleadoPage.firstName),
                 Enter.theValue(agregarEmpleadoLoombokData.getMiddleName()).into(AgregarEmpleadoPage.middleName),
                 Enter.theValue(agregarEmpleadoLoombokData.getLastName()).into(AgregarEmpleadoPage.lastName),
